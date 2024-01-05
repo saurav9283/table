@@ -17,7 +17,7 @@ const Form = () => {
       const [isEditing, setIsEditing] = useState(false);
       const [submittedData, setSubmittedData] = useState([]);
       const [editedIndex, setEditedIndex] = useState(null);
-      const [recordsToShow, setRecordsToShow] = useState(submittedData.length);
+      const [recordsToShow, setRecordsToShow] = useState(3);
     
       useEffect(() => {
         const savedData = localStorage.getItem("submittedData");
