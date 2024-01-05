@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './Form.css';
+import Swal from "sweetalert2";
 import FormInput from "../Formitem/FormInput.js";
 import FormDataRow from "../FormData/FormDataRow.js";
 
@@ -87,10 +88,27 @@ const Form = () => {
       };
     
       const handleDelete = (index) => {
-        const updatedSubmittedData = submittedData.filter((_, i) => i !== index);
-        setSubmittedData(updatedSubmittedData);
-        localStorage.setItem("submittedData", JSON.stringify(updatedSubmittedData));
-        toast.info("Data deleted!", { position: "top-center" });
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const updatedSubmittedData = submittedData.filter((_, i) => i !== index);
+            setSubmittedData(updatedSubmittedData);
+            localStorage.setItem("submittedData", JSON.stringify(updatedSubmittedData));
+    
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        });
       };
       const handleSave = (index) => {
         const updatedData = submittedData.map((data, dataIndex) =>
