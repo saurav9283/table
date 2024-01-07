@@ -7,6 +7,7 @@ import FormInput from "../Formitem/FormInput.js";
 import FormDataRow from "../FormData/FormDataRow.js";
 
 const Form = () => {
+  const [sortField, setSortField] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -133,11 +134,28 @@ const Form = () => {
     setShowModal(false);
   };
 
+  const handleSortChange = (e) => {
+    setSortField(e.target.value);
+  };
+
   return (
     <>
+    <div className="filter">
       <div className="title">
         <h1>Welcome To Form</h1>
       </div>
+      <div className="search">
+        <label className="label">Search by: </label>
+        <select className="select" value={sortField} onChange={handleSortChange}>
+          <option value="">Select</option>
+          <option value="firstName">First Name</option>
+          <option value="lastName">Last Name</option>
+          <option value="fatherName">Father's Name</option>
+          <option value="motherName">Mother's Name</option>
+        </select>
+      </div>
+      </div>
+
       <div className="add">
         <button onClick={openModalToAdd}>+Add</button>
       </div>
