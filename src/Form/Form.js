@@ -125,6 +125,13 @@ const Form = () => {
     setEditedIndex(null);
     toast.success("Data updated successfully!", { position: "top-center" });
   };
+   
+  const handelCancelChange = (index) => {
+    setFormData(submittedData[index]); 
+    setEditedIndex(null);
+    setIsEditing(false);
+  };
+  
   const handleRecordsToShowChange = (e) => {
     const newRecordsToShow = parseInt(e.target.value, 10);
     setRecordsToShow(newRecordsToShow);
@@ -237,6 +244,7 @@ const Form = () => {
                 handleDelete={handleDelete}
                 handleChange={handleChange}
                 handleSave={handleSave}
+                handelCancelChange={handelCancelChange}
               />
             ))}
           </tbody>

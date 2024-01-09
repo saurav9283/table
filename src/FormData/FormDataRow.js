@@ -11,6 +11,7 @@ const FormDataRow = ({
   handleDelete,
   handleChange,
   handleSave,
+  handelCancelChange,
 }) => {
   const isBeingEdited = editedIndex === index;
 
@@ -74,7 +75,10 @@ const FormDataRow = ({
       <td>
         <div className="buttons">
           {isBeingEdited ? (
+            <>
             <button onClick={() => handleSave(index)}>Save</button>
+            <button onClick={()=> handelCancelChange(index)}>cancel</button>
+            </>
           ) : (
             <>
               <EditIcon onClick={() => handleEdit(index)} />
