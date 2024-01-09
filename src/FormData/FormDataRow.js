@@ -8,12 +8,21 @@ const FormDataRow = ({
   editedIndex,
   formData,
   handleEdit,
+  setFormData,
   handleDelete,
-  handleChange,
   handleSave,
   handelCancelChange,
 }) => {
   const isBeingEdited = editedIndex === index;
+
+  const handleChange =(e,name,index)=>{
+      const value = e.target.value;
+      const updatedData = {
+        ...formData, [name]:value
+      }
+      setFormData(updatedData)
+    
+  }
 
   return (
     <tr key={index}>

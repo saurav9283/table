@@ -206,7 +206,7 @@ const Form = () => {
                 label="Address"
                 type="text"
                 name="address"
-                value={formData.address2}
+                value={formData.address}
                 onChange={handleChange}
                 required
               />
@@ -239,6 +239,7 @@ const Form = () => {
                 data={data}
                 index={index}
                 editedIndex={editedIndex}
+                setFormData={setFormData}
                 formData={formData}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
